@@ -3,6 +3,8 @@ package de.niko.core;
 import com.fazecast.jSerialComm.SerialPort;
 
 public class SerialConnection {
+    public static final String VERSION = "v0.2";
+
     public static String SelectedSerialPort = null;
     public static int Baudrate = 9600;
     public static int ReadTimeout = 500;
@@ -20,6 +22,6 @@ public class SerialConnection {
     }
 
     public static String getVersion() {
-        return SerialPort.getVersion();
+        return VERSION;
     }
 }

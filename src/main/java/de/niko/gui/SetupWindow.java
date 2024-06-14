@@ -26,7 +26,7 @@ public class SetupWindow extends JFrame {
         super();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         int frameWidth = 750;
-        int frameHeight = 320;
+        int frameHeight = 325;
         setSize(frameWidth, frameHeight);
         Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
         int x = (d.width - getSize().width) / 2;
@@ -51,7 +51,7 @@ public class SetupWindow extends JFrame {
                 textFieldReadTimeout.setText(String.valueOf(SerialConnection.ReadTimeout));
                 textFieldWriteTimeout.setText(String.valueOf(SerialConnection.WriteTimeout));
 
-                setTitle(getTitle() + " v" + SerialConnection.getVersion());
+                setTitle(getTitle() + " " + SerialConnection.getVersion());
             }
 
             @Override
@@ -84,47 +84,52 @@ public class SetupWindow extends JFrame {
 
             }
         });
-        // start components
 
-        labelSerialPort.setBounds(40, 40, 120, 25);
-        labelSerialPort.setText("Serial Port");
+        // start components
+        labelSerialPort.setBounds(10, 40, 120, 25);
+        labelSerialPort.setText("Serial Port:");
         labelSerialPort.setHorizontalAlignment(SwingConstants.CENTER);
         labelSerialPort.setHorizontalTextPosition(SwingConstants.CENTER);
         labelSerialPort.setFont(new Font("Arial", Font.BOLD, 18));
+        labelSerialPort.setForeground(Color.WHITE);
         cp.add(labelSerialPort);
 
-        labelBaudrate.setBounds(416, 40, 120, 25);
-        labelBaudrate.setText("Baudrate");
+        labelBaudrate.setBounds(415, 40, 120, 25);
+        labelBaudrate.setText("Baudrate:");
         labelBaudrate.setHorizontalAlignment(SwingConstants.CENTER);
         labelBaudrate.setHorizontalTextPosition(SwingConstants.CENTER);
         labelBaudrate.setFont(new Font("Arial", Font.BOLD, 18));
+        labelBaudrate.setForeground(Color.WHITE);
         cp.add(labelBaudrate);
 
-        labelReadTimeout.setBounds(40, 152, 170, 25);
-        labelReadTimeout.setText("Read Timeout (ms)");
+        labelReadTimeout.setBounds(10, 150, 180, 25);
+        labelReadTimeout.setText("Read Timeout (ms):");
         labelReadTimeout.setHorizontalAlignment(SwingConstants.CENTER);
         labelReadTimeout.setHorizontalTextPosition(SwingConstants.CENTER);
         labelReadTimeout.setFont(new Font("Arial", Font.BOLD, 18));
+        labelReadTimeout.setForeground(Color.WHITE);
         cp.add(labelReadTimeout);
 
-        labelWriteTimeout.setBounds(40, 200, 171, 25);
-        labelWriteTimeout.setText("Write Timeout (ms)");
+        labelWriteTimeout.setBounds(10, 200, 180, 25);
+        labelWriteTimeout.setText("Write Timeout (ms):");
         labelWriteTimeout.setHorizontalAlignment(SwingConstants.CENTER);
         labelWriteTimeout.setHorizontalTextPosition(SwingConstants.CENTER);
         labelWriteTimeout.setFont(new Font("Arial", Font.BOLD, 18));
+        labelWriteTimeout.setForeground(Color.WHITE);
         cp.add(labelWriteTimeout);
 
         textFieldBaudrate.setBounds(560, 40, 120, 25);
-        textFieldBaudrate.setFont(new Font("Arial", Font.PLAIN, 12));
+        textFieldBaudrate.setFont(new Font("Arial", Font.BOLD, 14));
         textFieldBaudrate.setBorder(new LineBorder(Color.BLACK, 1));
         cp.add(textFieldBaudrate);
 
-        textFieldReadTimeout.setBounds(256, 152, 120, 25);
+        textFieldReadTimeout.setBounds(256, 150, 120, 25);
+        textFieldReadTimeout.setFont(new Font("Arial", Font.BOLD, 14));
         textFieldReadTimeout.setBorder(new LineBorder(Color.BLACK, 1));
         cp.add(textFieldReadTimeout);
 
         textFieldWriteTimeout.setBounds(256, 200, 120, 25);
-        textFieldWriteTimeout.setFont(new Font("Arial", Font.PLAIN, 12));
+        textFieldWriteTimeout.setFont(new Font("Arial", Font.BOLD, 14));
         textFieldWriteTimeout.setBorder(new LineBorder(Color.BLACK, 1));
         cp.add(textFieldWriteTimeout);
 
@@ -143,10 +148,11 @@ public class SetupWindow extends JFrame {
 
         comboBoxSerialPort.setModel(comboBoxSerialPortModel);
         comboBoxSerialPort.setBounds(256, 40, 120, 24);
-        comboBoxSerialPort.setFont(new Font("Arial", Font.BOLD, 12));
+        comboBoxSerialPort.setFont(new Font("Arial", Font.BOLD, 14));
         cp.add(comboBoxSerialPort);
         // end components
 
+        cp.setBackground(Style.LIGHT_GRAY);
         setVisible(true);
     }
     public void buttonRun_ActionPerformed(ActionEvent evt) {
@@ -157,9 +163,10 @@ public class SetupWindow extends JFrame {
             SerialConnection.WriteTimeout = Integer.parseInt(this.textFieldWriteTimeout.getText());
             Logger.Info("Save config\nSelected COM:\t\t\t" + SerialConnection.SelectedSerialPort + "\nSelected Baudrate:\t\t" + SerialConnection.Baudrate + "\nSelected ReadTimeout:\t" + SerialConnection.ReadTimeout + "\nSelected WriteTimeout:\t" + SerialConnection.WriteTimeout);
             this.dispose();
+
+            new MainWindow();
         } catch (NumberFormatException ex) {
             Logger.Error("Format incorrect");
         }
-
     }
 }

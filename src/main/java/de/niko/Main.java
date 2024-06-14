@@ -1,6 +1,5 @@
 package de.niko;
 
-import com.fazecast.jSerialComm.SerialPort;
 import de.niko.gui.SetupWindow;
 
 public class Main {

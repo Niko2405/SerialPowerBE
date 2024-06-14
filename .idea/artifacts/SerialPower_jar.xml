@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="SerialPower:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/SerialPower_jar</output-path>
+    <root id="archive" name="SerialPower.jar">
+      <element id="module-output" name="SerialPower" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/json/json/20240303/json-20240303.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/fazecast/jSerialComm/2.11.0/jSerialComm-2.11.0.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

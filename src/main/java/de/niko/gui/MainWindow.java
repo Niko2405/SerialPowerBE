@@ -1,5 +1,6 @@
 package de.niko.gui;
 
+import de.niko.core.Console;
 import de.niko.core.Logger;
 import de.niko.core.SerialConnection;
 
